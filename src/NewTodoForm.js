@@ -20,9 +20,10 @@ function NewTodoForm ({addTodo}) {
     }
 
     return (
-        <form onSubmit={submitHandler}>
-            <label htmlFor=""></label>
-            <input type="text" value={formValues.todoText} onChange={handleChange} />
+        <form onSubmit={handleSubmit}>
+            <label htmlFor="todoText">Add a todo item</label>
+            <input id="todoText" name="todoText" type="text" value={formValues.todoText} onChange={handleChange} />
+            <button>Add</button>
         </form>
     )
 }
