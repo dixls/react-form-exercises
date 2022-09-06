@@ -11,13 +11,17 @@ function BoxList() {
 
     function addBox({backgroundColor, width, height}) {
         const key = uuidv4();
-        setBoxes(boxes => [...boxes, { backgroundColor, width, height, key }]);
+        const listId = key;
+        setBoxes(boxes => [...boxes, { backgroundColor, width, height, key, listId }]);
+    }
+    function deleteBox(listId) {
+        setBoxes(boxes => boxes.filter(box=> box.listId != listId))
     }
 
     return (
         <div className="BoxList">
             <NewBoxForm addBox={addBox} />
-            {boxes.map(box => <Box backgroundColor={box.backgroundColor} width={box.width} height={box.height} key={box.key} />)}
+            {boxes.map(box => <Box backgroundColor={box.backgroundColor} width={box.width} height={box.height} key={box.key} listId={box.key} deleteBox={deleteBox} />)}
         </div>
     )
 }
